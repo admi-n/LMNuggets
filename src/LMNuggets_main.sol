@@ -17,8 +17,8 @@ pragma solidity ^0.8.20;
 
 import {Ownable2Step} from "./Ownable2Step.sol";
 import "./Owner_Pausable.sol";  // 通过两步转移定义owner 用来暂停或者开放合约 
-import {EconomyLib} from "./Lib/EconomyLib.sol";
-import {HomomorphicEncryptionLib} from "./Lib/HomomorphicEncryptionLib.sol";
+import {EconomyLib} from "./LMNuggetsLib/EconomyLib.sol";
+import {HomomorphicEncryptionLib} from "./LMNuggetsLib/HomomorphicEncryptionLib.sol";
 
 
 contract HashLock is Pausable {

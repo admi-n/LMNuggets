@@ -1,11 +1,9 @@
 pragma circom 2.0.0;
 
-include "merkle.circom";
-// include "../node_modules/circomlib/circuits/mimcsponge.circom";
-// include "../node_modules/circomlib/circuits/mimcsponge.circom";
+include "../node_modules/circomlib/circuits/mimcsponge.circom";
 
+// 买家信息哈希电路模板
 template BuyerInfoHashCircuit() {
-    // 输入交易哈希和买家信息
     signal input tradeHash;          // 交易哈希
     signal input buyerAddressHash;
     signal input buyerPhoneHash;
@@ -31,7 +29,7 @@ template BuyerInfoHashCircuit() {
     merkleVerify.hash <== combinedHash;
 }
 
-
+// 主电路
 template Main() {
     signal input tradeHash;
     signal input buyerAddressHash;
