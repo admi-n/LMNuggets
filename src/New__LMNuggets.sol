@@ -182,7 +182,7 @@ contract C2CPlatform is HashLock {
     event FeeCollected(uint tradeId, uint fee);
     event LogPreimage(bytes32 preimage);
 
-    // 买家提交个人信息哈希
+    // 买家提交个人信息哈希,需要+0x
     function submitBuyerInfo(bytes32 _buyerAddressHash, bytes32 _buyerPhoneHash) external whenNotPaused {
         buyerInfoHash[msg.sender] = keccak256(abi.encodePacked(_buyerAddressHash, _buyerPhoneHash));
         emit BuyerInfoSubmitted(msg.sender, _buyerAddressHash, _buyerPhoneHash);
