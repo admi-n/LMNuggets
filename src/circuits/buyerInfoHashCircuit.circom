@@ -2,7 +2,7 @@ pragma circom 2.0.0;
 
 include "../node_modules/circomlib/circuits/mimcsponge.circom";
 
-// Fixed Selector template with proper signal initialization
+
 template Selector() {
     signal input in[2];  // 输入两个值
     signal input s;      // 选择信号 (0 或 1)
@@ -63,7 +63,7 @@ template BuyerInfoHashCircuit(nLevels) {
     signal input pathElements[nLevels];
     signal input pathIndices[nLevels];
 
-    // 使用 MiMCSponge 计算买家信息哈希
+    // 计算买家信息哈希
     component buyerInfoHasher = MiMCSponge(2, 220, 1);
     buyerInfoHasher.k <== 0;
     buyerInfoHasher.ins[0] <== buyerAddressHash;
@@ -82,8 +82,7 @@ template BuyerInfoHashCircuit(nLevels) {
     merkleProof.pathElements <== pathElements;
     merkleProof.pathIndices <== pathIndices;
     
-    // 验证
-    root === merkleProof.root;
+    root === merkleProof.root;  //验证
 }
 
 

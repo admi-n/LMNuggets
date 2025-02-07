@@ -7,17 +7,17 @@ library HomomorphicEncryptionLib {
     }
 
     struct KeyPair {
-        uint256 n; // 模数
-        uint256 g; // 基数
-        uint256 lambda; // ϕ(n)的值
-        uint256 mu; // 私钥
+        uint256 n;
+        uint256 g;
+        uint256 lambda; 
+        uint256 mu;
     }
 
     function generateKeyPair() internal pure returns (KeyPair memory) {
-        uint256 n = 221; // 示例模数
-        uint256 g = n + 1; // 示例基数
-        uint256 lambda = 110; // 示例λ(n)
-        uint256 mu = 1; // 示例μ值
+        uint256 n = 221;
+        uint256 g = n + 1;
+        uint256 lambda = 110;
+        uint256 mu = 1; 
         return KeyPair(n, g, lambda, mu);
     }
 
@@ -44,10 +44,10 @@ library HomomorphicEncryptionLib {
         result = 1;
         base = base % modulus;
         while (exponent > 0) {
-            if (exponent % 2 == 1) { // 如果指数是奇数
+            if (exponent % 2 == 1) {
                 result = (result * base) % modulus;
             }
-            exponent = exponent >> 1; // 指数除以2
+            exponent = exponent >> 1;
             base = (base * base) % modulus;
         }
     }
