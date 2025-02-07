@@ -177,6 +177,7 @@ contract C2CPlatform is HashLock {
     event BuyerInfoSubmitted(address indexed buyer, bytes32 buyerAddressHash, bytes32 buyerPhoneHash);
     event TradeCreated(uint tradeId, address seller, address buyer, uint amount, bytes32 hashLock, uint256 timelock);
     event TradeLocked(uint tradeId);
+    event CombinedHashLogged(bytes32 combinedHash);
     event TradeConfirmed(uint tradeId);
     event TradeCancelled(uint tradeId);
     event FeeCollected(uint tradeId, uint fee);
@@ -226,8 +227,11 @@ contract C2CPlatform is HashLock {
 
         bytes32 combinedHash = keccak256(abi.encodePacked(tradeHash, buyerInfoHash));
 
+        emit CombinedHashLogged(combinedHash);
+        
         trade.status = EconomyLib.TradeStatus.Locked;
         emit TradeLocked(_tradeId);
+
 
         // 在这里，你可以将这个 combinedHash 提供给卖家进行后续的验证。
     }
